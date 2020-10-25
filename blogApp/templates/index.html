@@ -1,0 +1,75 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <title>NFL Blog</title>
+  <meta name="description" content="website description" />
+  <meta name="keywords" content="website keywords, website keywords" />
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+  <link rel="stylesheet" type="text/css" href="../static/css/style.css" title="style" />
+</head>
+
+<body>
+  <div id="main">
+    <div id="header">
+      <div id="logo">
+        <div id="logo_text">
+          <h1><a href="">NFL <span class="logo_colour">Blog</span></a></h1>
+          <h2>Todas las noticias de la NFL</h2>
+        </div>
+      </div>
+      <div id="menubar">
+        <ul id="menu">
+          <li class="selected"><a href="">Indice</a></li>
+          <li><a href="/blogApp/liga">Liga</a></li>
+          <li><a href="/blogApp/temas">Temas</a></li>
+          <li><a href="/blogApp/tags">Tags</a></li>
+        </ul>
+      </div>
+    </div>
+    <div id="site_content">
+      <div class="sidebar">
+		 <!-- BARRA LATERAL -->
+		 <h3>Ultimas noticias</h3>
+		 {% if news %}
+			{% for p in news %}
+				<h4>{{ p.title }}</h4>
+				<p>{{p.titular}}<a href="{% url 'postDetail' p.title %}">...continue leyendo</a>
+				</p>
+				<h5>{{p.published_date}}</h5>
+			{% endfor %}
+		{% else %}
+			<p>No hay posts creados.</p>
+		{% endif %}
+		
+		<h3>-------------------------</h3>
+		<h3>Enlaces NFL</h3>
+		 <ul>
+		   <li><a href="https://www.nfl.com/schedules/">Calendario</a></li>
+		   <li><a href="https://www.nfl.com/stats/player-stats/">Estadisticas</a></li>
+		   <li><a href="https://www.nfl.com/standings/">Clasificacion</a></li>
+		 </ul>
+      </div>
+      <div id="content">
+        <!-- CONTENIDO -->
+        <h1>BIENVENIDOS A NFL BLOG</h1>
+		<h2>Nuestras noticias</h2>
+		{% if lista_posts %}
+      <ul>
+			{% for p in lista_posts %}
+				<li>
+					<a href="{% url 'postDetail' p.title %}">{{ p.title}}</a>
+				</li>
+			{% endfor %}
+			</ul>
+		{% else %}
+		<p>No hay posts creados.</p>
+		{% endif %}
+      </div>
+    </div>
+    <div id="footer">
+      Hecho por <a href="https://github.com/DiegoRojo99/BlogDjango">Diego Rojo Estebas</a> | {{dt}} | <a href="/blogApp">HOME</a>
+    </div>
+  </div>
+</body>
+</html>
