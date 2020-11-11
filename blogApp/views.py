@@ -3,6 +3,8 @@ from django.shortcuts import get_object_or_404, get_list_or_404
 from datetime import datetime
 from .models import Post, Team, Theme, Tag, Division, Conference
 
+
+
 # Create your views here.
 
 # Devuelve los titulos de los posts
